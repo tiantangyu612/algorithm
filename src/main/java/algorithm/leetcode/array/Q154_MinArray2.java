@@ -14,6 +14,36 @@ package algorithm.leetcode.array;
  */
 public class Q154_MinArray2 {
     public static int findMin(int[] nums) {
-        return 0;
+        if (nums.length == 1) {
+            return nums[0];
+        }
+
+        int left = 0;
+        int right = nums.length - 1;
+
+        if (nums[left] < nums[right]) {
+            return nums[0];
+        }
+
+        while (left < right) {
+            int mid = left + (right - left) / 2;
+            if (nums[mid] == nums[right]) {
+                right = right - 1;
+            } else if (nums[mid] > nums[right]) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+
+        return nums[left];
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{3, 3, 1, 3};
+        System.out.println(findMin(nums));
+
+        int[] nums2 = new int[]{10, 1, 10, 10, 10};
+        System.out.println(findMin(nums2));
     }
 }
