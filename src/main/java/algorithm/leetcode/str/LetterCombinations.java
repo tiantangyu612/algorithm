@@ -43,13 +43,12 @@ public class LetterCombinations {
             for (int i = 0; i < letters.length(); i++) {
                 combination.append(letters.charAt(i));
                 backtrack(combinations, phoneMap, digits, index + 1, combination);
-                System.out.println(combination);
                 combination.deleteCharAt(index);
             }
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(letterCombinations("2345"));
+        System.out.println(letterCombinations("23"));
     }
 }
