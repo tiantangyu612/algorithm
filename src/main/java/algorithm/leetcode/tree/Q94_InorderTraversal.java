@@ -2,6 +2,7 @@ package algorithm.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * 给定一个二叉树，返回它的中序 遍历。
@@ -61,12 +62,32 @@ public class Q94_InorderTraversal {
         return res;
     }
 
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        while (null != root || !stack.isEmpty()) {
+            while (null != root) {
+                stack.push(root);
+                root = root.left;
+            }
+
+            root = stack.pop();
+            result.add(root.val);
+            root = root.right;
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         Q94_InorderTraversal inorderTraversal = new Q94_InorderTraversal();
         List<Integer> integers = inorderTraversal.inorderTraversal(TreeNode.newInstance());
         System.out.println(integers);
 
         integers = inorderTraversal.inorderTraversal2(TreeNode.newInstance());
+        System.out.println(integers);
+
+        integers = inorderTraversal.inorderTraversal3(TreeNode.newInstance());
         System.out.println(integers);
     }
 }
