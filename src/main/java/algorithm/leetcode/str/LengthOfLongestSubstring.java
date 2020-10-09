@@ -45,7 +45,7 @@ public class LengthOfLongestSubstring {
                 back++;
             }
 
-            ++front;
+            front++;
         }
 
         return max;
